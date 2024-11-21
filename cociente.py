@@ -27,20 +27,20 @@ def ajustar():
     y = list(map(float, y_entry.get().split(",")))
     a, b, bondad = ajuste_cociente(x, y)
     
-    label_result = tk.Label(window, text=f"La ecuación de la curva es: y = {a} / (1 + {b} * x)")
+    label_result = tk.Label(window, text=f"La ecuación de la curva es: y = {a} * (x / ({b} + x))")
     label_result.pack(pady=20)
     
     # Crear la figura de Matplotlib
     fig, ax = plt.subplots()
     ax.scatter(x, y, color='blue', label='Datos')
     x_line = np.linspace(min(x), max(x), 100)
-    y_line = a / (1 + b * x_line)
+    y_line = a * (x_line / (b + x_line))
     ax.plot(x_line, y_line, color='red', label='Ajuste Cociente')
     ax.set_xlabel('x')
     ax.set_ylabel('y')
     ax.legend()
     
-    bondad_label = tk.Label(window, text=f"El coeficiente de bondad es: {bondad}")
+    bondad_label = tk.Label(window, text=f"El bondad del ajuste es: {bondad}")
     bondad_label.pack(pady=10)
     
     # Integrar la figura en Tkinter

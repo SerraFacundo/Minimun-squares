@@ -60,10 +60,11 @@ def ajuste_exponencial(x, y) -> float:
 
 def ajuste_cociente(x, y) -> float:
     # Transformar los datos
-    y_inv = [1 / yi for yi in y]
+    y_inv = [(1 / yi) for yi in y]
+    x_inv = [(1 / xi) for xi in x]
     
     # Ajuste lineal a los datos transformados
-    b_inv, m_inv, bondad = ajuste_lineal(x, y_inv)
+    b_inv, m_inv, bondad = ajuste_lineal(x_inv, y_inv)
     
     # Transformar los coeficientes de vuelta
     a = 1 / b_inv
