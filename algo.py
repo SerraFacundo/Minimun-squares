@@ -13,14 +13,11 @@ players = [1701, 2044, 2103, 1470, 1433, 1352, 1257, 1497, 2009, 2090,
 # Conversión de jugadores a escala 10^4
 players_scaled = [p / 1e4 for p in players]
 
-# Función y = 542.1678x - 897.4311
-x = list(range(1, 25))
-y = [542.1678 * xi - 897.4311 for xi in x]
 
 # Crear el gráfico
 plt.figure(figsize=(10, 5))
 plt.scatter(days, players_scaled, color='black', label='Jugadores (x $10^4$)', s=50)
-plt.plot(x, [yi / 1e4 for yi in y], color='red', linestyle='-', label='y = 542.1678x - 897.4311')
+plt.plot(x, [yi / 1e4 for yi in y], color='red', linestyle='-', label=r'$y = 3658.3946 \cdot \frac{x}{1.9888 + x}$')
 
 # Títulos y etiquetas
 plt.title("Pico máximo de jugadores por día (Noviembre 2024)", fontsize=14)
